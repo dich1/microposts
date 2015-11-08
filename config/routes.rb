@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :users, except: [:index, :new]
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts
+  resources :relationships, only: [:create, :destroy]
 end
