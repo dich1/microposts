@@ -8,17 +8,14 @@
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control'  %>
 
-      <%= f.label :area %>
-      <%= f.text_field :area, class: 'form-control'  %>
-
       <%= f.label :email %>
       <%= f.text_field :email, class: 'form-control'  %>
 
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control'  %>
 
-      <%= f.label :password_confirmation, "Confirmation", class: 'form-control'  %>
-      <%= f.password_field :password_confirmation %>
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
 
       <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
     <% end %>
