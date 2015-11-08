@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :destroy]
+  before_action :set_user, only: [:edit, :update]
   
   def show
    @user = User.find(params[:id])
@@ -27,16 +27,12 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       # 保存に成功した場合はトップページへリダイレクト
-      redirect_to user_path , notice: 'メッセージを編集しました' # リンク飛ばす部分
+      flash[:success] = "プロフィールを編集しました"
+      redirect_to user_path
     else
       # 保存に失敗した場合は編集画面へ戻す
       render 'edit'
     end
-  end
-
-  def destroy
-    @user.destroy
-    redirect_to root_path, notice: 'メッセージを削除しました'
   end
 
   private
