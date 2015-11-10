@@ -1,0 +1,15 @@
+<h1>followings</h1>
+
+<div class="row">
+  <aside class="col-md-2">
+    <section class="user_info">
+      <h1>
+        <% @users.each do |u| %>
+        <%= gravatar_for @user %>
+        <%= u.name %>
+        <% end %>
+      </h1>
+    </section>
+  </aside>
+</div>
+

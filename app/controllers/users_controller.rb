@@ -24,7 +24,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
-  
   def update
     if @user.update(user_params)
       # 保存に成功した場合はトップページへリダイレクト
@@ -36,8 +35,17 @@ class UsersController < ApplicationController
     end
   end
 
-  private
+  def followings #課題
+    @user = User.find(params[:id])
+    @users = @user.following_users 
+  end
 
+  def followers #課題
+    @user = User.find(params[:id])
+    @users = @user.follower_users
+  end
+
+  private
   def user_params
     params.require(:user).permit(:name, :area, :email, :password,
                                  :password_confirmation)
