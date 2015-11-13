@@ -1,4 +1,5 @@
 <% if logged_in? %>
+test
   <div class="row">
     <aside class="col-md-4">
       <section class="user_info">
@@ -8,5 +9,15 @@
         <%= render 'shared/micropost_form' %>
       </section>
     </aside>
-  </div>
+    <div class="col-md-8">
+      <h3>Micropost Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+   </div>
 <% else %>
+  <div class="center jumbotron">
+    <h1>Welcome to the Microposts</h1>
+
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+  </div>
+<% end %>
