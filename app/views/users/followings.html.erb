@@ -11,7 +11,8 @@
   </aside>
   <div class="col-md-8">
     <section class="user_info">
-      <ul style="list-style-type: none">`
+      <ul style="list-style-type: none"> <!--マークを消す-->
+      <ul id="followers-list">  
         <% @users.each do |u| %>
           <li class="clearfix">
         <%= gravatar_for u %>
