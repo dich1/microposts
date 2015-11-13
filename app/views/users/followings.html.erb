@@ -1,15 +1,23 @@
 <h1>followings</h1>
-
+<hr />
 <div class="row">
-  <aside class="col-md-2">
+  <aside class="col-md-4">
     <section class="user_info">
-      <h1>
-        <% @users.each do |u| %>
+      <ul>
         <%= gravatar_for @user %>
-        <%= u.name %>
-        <% end %>
-      </h1>
+        <%= @user.name %>
+      </ul>
     </section>
   </aside>
+  <div class="col-md-8">
+    <section class="user_info">
+      <ul style="list-style-type: none">`
+        <% @users.each do |u| %>
+          <li class="clearfix">
+        <%= gravatar_for u %>
+        <%= u.name %>
+          </li>
+        <% end %>
+      </ul>
+  </div>
 </div>
-
