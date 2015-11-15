@@ -46,15 +46,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @array = [:page]
-    users = User.all
-    users.each do |user|
-      array.push({
-          name: user.name,
-          foo: user.hoge.first.foo
-      })
-    end
-    @hoge = Kaminari.paginate_array(array).page(params[:page]).per(5)
+    @users = User.all.page(params[:page])
   end
   
   private

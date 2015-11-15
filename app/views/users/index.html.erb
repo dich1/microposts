@@ -1,25 +1,20 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    メッセージ一覧
+    ユーザー一覧
   </div>
 
   <div class="panel-body">
+    <ul style="list-style-type: none">
+    <ul id="blank-list">
     <% @users.each do |user| %>
-      <span class="label label-info"><%= user.name %></span>
-      <%= user.body %>
-      (<%= link_to "edit" , edit_user_path(user) %><!-- リンクを飛ばす部分-->
-       <%= link_to "destroy" , user , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
-      )
-      <br>
+      <li class="clearfix">
+        <%= link_to gravatar_for(user, size: 50), user %>
+        <span class="user"><%= link_to user.name, user %></span>
+      </li>
     <% end %>
-    
-    <% @users.each do |user| %>
-    <p> <%= user.name %></p>
-    <% end %>
+    </ul>
     <%= paginate @users %>
   </div>
 </div>
 
-<% #部分テンプレートを読み込んでいる %>
-<%= render 'form' %>
 
