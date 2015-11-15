@@ -16,6 +16,7 @@
       <ol class="microposts">
         <%= render @microposts %>
       </ol>
+      <%= paginate @microposts, :params => {:controller => 'users', :action => 'show'} %>
     <% end %>
   </div>
 </div>

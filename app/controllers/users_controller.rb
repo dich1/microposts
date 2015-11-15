@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   
   def show
    @user = User.find(params[:id])
-   @microposts = @user.microposts
+   @microposts = @user.microposts.page(params[:page]).per(5) #ページネーション
   end
   
   def new
@@ -37,14 +37,26 @@ class UsersController < ApplicationController
 
   def followings #課題
     @user = User.find(params[:id])
-    @users = @user.following_users 
+    @users = @user.following_users.page(params[:page]).per(5) #ページネーション
   end
 
   def followers #課題
     @user = User.find(params[:id])
-    @users = @user.follower_users
+    @users = @user.follower_users.page(params[:page]).per(5) #ページネーション
   end
 
+  def index
+    @array = [:page]
+    users = User.all
+    users.each do |user|
+      array.push({
+          name: user.name,
+          foo: user.hoge.first.foo
+      })
+    end
+    @hoge = Kaminari.paginate_array(array).page(params[:page]).per(5)
+  end
+  
   private
   def user_params
     params.require(:user).permit(:name, :area, :email, :password,
@@ -54,5 +66,4 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
-
 end

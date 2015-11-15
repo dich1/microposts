@@ -7,13 +7,19 @@
     <% @users.each do |user| %>
       <span class="label label-info"><%= user.name %></span>
       <%= user.body %>
-      (<%= link_to "edit" , edit_user_path(user) %><!-- リンクを飛ばす部分
+      (<%= link_to "edit" , edit_user_path(user) %><!-- リンクを飛ばす部分-->
        <%= link_to "destroy" , user , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
       )
       <br>
     <% end %>
+    
+    <% @users.each do |user| %>
+    <p> <%= user.name %></p>
+    <% end %>
+    <%= paginate @users %>
   </div>
 </div>
 
 <% #部分テンプレートを読み込んでいる %>
 <%= render 'form' %>
+
