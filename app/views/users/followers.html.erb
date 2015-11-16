@@ -21,6 +21,7 @@
         <% end %>
       </ul>
       </ul>
+      <%= paginate @users, :params => {:controller => 'users', :action => 'followers'} %>
     </section>
   </div>
 </div>

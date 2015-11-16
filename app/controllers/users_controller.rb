@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   
   def show
    @user = User.find(params[:id])
-   @microposts = @user.microposts.page(params[:page]) #ページネーション
+   @microposts = @user.microposts.page(params[:page]).per(5) #ページネーション
   end
   
   def new
@@ -37,12 +37,12 @@ class UsersController < ApplicationController
 
   def followings #課題
     @user = User.find(params[:id])
-    @users = @user.following_users.page(params[:page]) #ページネーション
+    @users = @user.following_users.page(params[:page]).per(5) #ページネーション
   end
 
   def followers #課題
     @user = User.find(params[:id])
-    @users = @user.follower_users.page(params[:page]) #ページネーション
+    @users = @user.follower_users.page(params[:page]).per(5) #ページネーション
   end
 
   def index
